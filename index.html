@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Mindset & Resilience Vocabulary Challenge</title>
+<style>
+  :root{
+    --ink:#1f2430;
+    --paper:#faf7f2;
+    --card:#ffffff;
+    --blue:#3a6ea5;
+    --blue-dark:#2a5482;
+    --violet:#7c5cbf;
+    --violet-dark:#5f439c;
+    --green:#2f9e6e;
+    --green-bg:#e7f6ef;
+    --orange:#c9762f;
+    --orange-bg:#fbeee1;
+    --gray:#6b7280;
+    --gray-light:#e6e3dd;
+    --gold:#d4a13d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:
+      radial-gradient(circle at 10% 10%, #eef1fa 0%, transparent 40%),
+      radial-gradient(circle at 90% 90%, #f4ecfb 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+    padding:32px 16px;
+  }
+  .wrap{max-width:820px;margin:0 auto;}
+  .card{
+    background:var(--card);
+    border-radius:18px;
+    box-shadow:0 12px 40px rgba(31,36,48,0.08), 0 2px 6px rgba(31,36,48,0.05);
+    padding:36px 32px;
+    border:1px solid #ece7dc;
+  }
+  h1{
+    font-size:1.9rem;
+    text-align:center;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  .subtitle{
+    text-align:center;
+    color:var(--gray);
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:0.92rem;
+    margin-bottom:22px;
+    letter-spacing:0.02em;
+  }
+  .stats{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:22px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    margin-bottom:26px;
+    font-size:1.05rem;
+  }
+  .stats .score{
+    display:flex;align-items:center;gap:8px;font-weight:700;color:var(--gold);
+  }
+  .stats .progress-text{color:var(--gray);font-size:0.95rem;}
+
+  .tabs{
+    display:flex;
+    justify-content:center;
+    margin-bottom:30px;
+  }
+  .tabs-inner{
+    background:var(--gray-light);
+    border-radius:10px;
+    padding:4px;
+    display:flex;
+    gap:2px;
+  }
+  .tab-btn{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    border:none;
+    background:transparent;
+    padding:10px 22px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:0.92rem;
+    color:var(--gray);
+    cursor:pointer;
+    transition:all .18s ease;
+  }
+  .tab-btn.active-1{background:var(--blue);color:#fff;box-shadow:0 3px 8px rgba(58,110,165,0.35);}
+  .tab-btn.active-2{background:var(--violet);color:#fff;box-shadow:0 3px 8px rgba(124,92,191,0.35);}
+  .tab-btn:not(.active-1):not(.active-2):hover{background:#d9d5cb;}
+
+  .prompt-box{
+    background:#f6f4ee;
+    border-radius:14px;
+    padding:28px 22px;
+    text-align:center;
+    margin-bottom:22px;
+    border:1px solid #ece7dc;
+  }
+  .task-heading{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    margin-bottom:16px;
+    color:#374151;
+  }
+  .pattern{
+    font-size:1.9rem;
+    font-weight:700;
+    letter-spacing:0.08em;
+    margin-bottom:14px;
+    word-spacing:4px;
+  }
+  .pattern .blank{
+    color:var(--blue);
+    border-bottom:2px solid var(--blue);
+    padding:0 4px;
+  }
+  .hint{
+    font-style:italic;
+    color:var(--gray);
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:0.95rem;
+  }
+  .question-text{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:1.1rem;
+    font-weight:600;
+    color:#374151;
+  }
+
+  .input-area{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+  input[type=text]{
+    width:280px;
+    padding:12px 14px;
+    border:2px solid #d7d2c6;
+    border-radius:10px;
+    text-align:center;
+    font-size:1.05rem;
+    font-weight:600;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    letter-spacing:0.04em;
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  input[type=text]:focus{border-color:var(--blue);}
+  .helper-text{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:0.85rem;
+    color:var(--blue-dark);
+    font-weight:600;
+  }
+
+  .btn{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    border:none;
+    border-radius:10px;
+    padding:11px 26px;
+    font-weight:700;
+    font-size:0.95rem;
+    color:#fff;
+    cursor:pointer;
+    transition:filter .15s ease, transform .1s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn:disabled{background:#b7b2a6 !important;cursor:not-allowed;}
+  .btn-blue{background:var(--blue);}
+  .btn-blue:hover:not(:disabled){filter:brightness(0.92);}
+  .btn-violet{background:var(--violet);}
+  .btn-violet:hover:not(:disabled){filter:brightness(0.92);}
+  .btn-gray{background:#6b7280;}
+  .btn-gray:hover{filter:brightness(0.92);}
+  .btn-green{background:var(--green);}
+  .btn-green:hover{filter:brightness(0.92);}
+
+  .options-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    max-width:560px;
+    margin:0 auto 24px;
+  }
+  @media (max-width:520px){ .options-grid{grid-template-columns:1fr;} }
+  .option-btn{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    text-align:left;
+    padding:14px 16px;
+    border-radius:10px;
+    border:2px solid #d7d2c6;
+    background:#fff;
+    font-weight:600;
+    font-size:0.98rem;
+    cursor:pointer;
+    transition:all .15s ease;
+    color:#374151;
+  }
+  .option-btn:hover{border-color:#b39fe0;background:#faf8fd;}
+  .option-btn.selected{border-color:var(--violet);background:#f2edfb;color:var(--violet-dark);}
+
+  .center{text-align:center;}
+
+  .feedback{
+    margin-top:30px;
+    text-align:center;
+  }
+  .feedback-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:10px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+  }
+  .feedback-pill.good{background:var(--green-bg);color:var(--green);}
+  .feedback-pill.bad{background:var(--orange-bg);color:var(--orange);}
+
+  .definition-box{
+    margin-top:16px;
+    padding:16px 20px;
+    background:#eef3fa;
+    border-radius:10px;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    text-align:left;
+  }
+  .definition-box .word{
+    font-weight:800;
+    color:var(--blue-dark);
+    margin-bottom:6px;
+    letter-spacing:0.02em;
+  }
+  .definition-box .def{color:#374151;font-size:0.95rem;}
+
+  .action-row{
+    margin-top:22px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  .completion-summary{
+    margin-top:30px;
+    background:linear-gradient(120deg,#eaf7f0,#eef3fb);
+    border:1px solid #d7ead9;
+    border-radius:14px;
+    padding:26px;
+    text-align:center;
+  }
+  .completion-summary .emoji{font-size:2.4rem;margin-bottom:6px;}
+  .completion-summary h3{margin:4px 0 14px;font-size:1.2rem;}
+  .score-card{
+    background:#fff;
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:14px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .score-card .big{font-size:1.5rem;font-weight:800;}
+  .score-card .small{font-size:0.85rem;color:var(--gray);margin-top:2px;}
+  .nudge{
+    background:#e3edfa;
+    border-radius:10px;
+    padding:12px 16px;
+    margin-bottom:16px;
+    color:var(--blue-dark);
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+  }
+
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(20,20,25,0.55);
+    display:flex;align-items:center;justify-content:center;
+    z-index:50;
+    padding:16px;
+  }
+  .modal{
+    background:#fff;
+    border-radius:16px;
+    padding:34px 28px;
+    max-width:400px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  }
+  .modal .trophy{font-size:3.4rem;margin-bottom:10px;}
+  .modal h2{margin:0 0 8px;font-size:1.5rem;}
+  .modal p.lead{color:var(--gray);font-family:'Helvetica Neue',Arial,sans-serif;margin-bottom:16px;}
+  .modal .final-score{
+    background:linear-gradient(120deg,#e9eefa,#f1e9fb);
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:20px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .modal .final-score .pts{font-size:1.6rem;font-weight:800;}
+  .modal .final-score .pct{font-size:0.85rem;color:var(--gray);margin-top:4px;}
+
+  .progress-wrap{margin-top:30px;}
+  .progress-track{
+    width:100%;
+    height:8px;
+    background:var(--gray-light);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--blue),var(--violet));
+    border-radius:999px;
+    transition:width .25s ease;
+  }
+  .progress-caption{
+    text-align:center;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:0.85rem;
+    color:var(--gray);
+    margin-top:8px;
+  }
+  .progress-caption .done{color:var(--green);font-weight:700;margin-left:6px;}
+
+  .status-row{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    margin-top:14px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    flex-wrap:wrap;
+  }
+  .status-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;color:#9aa0ab;}
+  .status-item.done{color:var(--green);}
+  .dot{width:10px;height:10px;border-radius:50%;background:#d7d2c6;}
+  .status-item.done .dot{background:var(--green);}
+
+  svg.icon{vertical-align:middle;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>Growth Mindset &amp; Resilience Vocabulary Challenge</h1>
+    <p class="subtitle">Build your vocabulary around perseverance, resilience, and a growth mindset</p>
+
+    <div class="stats">
+      <div class="score">🏆 <span id="scoreDisplay">Score: 0</span></div>
+      <div class="progress-text" id="wordCounter">Word 1 of 8</div>
+    </div>
+
+    <div class="tabs">
+      <div class="tabs-inner">
+        <button class="tab-btn" id="tab1Btn" onclick="switchTask()">Task 1: Fill in the Blanks</button>
+        <button class="tab-btn" id="tab2Btn" onclick="switchTask()">Task 2: Multiple Choice</button>
+      </div>
+    </div>
+
+    <div id="taskArea"></div>
+
+    <div id="feedbackArea"></div>
+
+    <div id="completionArea"></div>
+
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:12.5%"></div></div>
+      <p class="progress-caption" id="progressCaption">Progress: 1 / 8</p>
+      <div class="status-row">
+        <div class="status-item" id="status1"><span class="dot"></span><span>Task 1: Fill in Blanks</span></div>
+        <div class="status-item" id="status2"><span class="dot"></span><span>Task 2: Multiple Choice</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalArea"></div>
+
+<script>
+const vocabularyWords = [
+  { word:'PERSEVERANCE', pattern:'P_RS_V_R_NC_', definition:'The quality of continuing to try despite difficulties or obstacles', hint:'Sticking with something even when it gets tough' },
+  { word:'RESILIENCE', pattern:'R_S_L_E_C_', definition:'The ability to recover quickly from setbacks and adapt to challenges', hint:'Bouncing back from failure or hardship' },
+  { word:'DETERMINATION', pattern:'D_T_RM_N_T_ON', definition:'Firmness of purpose; the quality of being determined to succeed', hint:'Having a strong will to achieve your goals' },
+  { word:'ADAPTABILITY', pattern:'_D_PT_B_L_TY', definition:'The quality of being able to adjust to new conditions or situations', hint:'Being flexible and adjusting to change' },
+  { word:'OPTIMISM', pattern:'_PT_M_SM', definition:'The tendency to expect positive outcomes and see opportunities', hint:'Looking on the bright side and expecting good things' },
+  { word:'PERSISTENCE', pattern:'P_RS_ST_NC_', definition:'Continuing firmly in a course of action despite obstacles', hint:'Never giving up, even when faced with challenges' },
+  { word:'CONFIDENCE', pattern:'C_NF_D_NC_', definition:"Belief in oneself and one's abilities", hint:'Trusting in your own skills and capabilities' },
+  { word:'CURIOSITY', pattern:'C_R_OS_TY', definition:'Strong desire to know or learn something new', hint:'Being eager to explore and discover' }
+];
+
+const multipleChoiceQuestions = [
+  { question:'Which word describes the ability to bounce back from failure?', options:['Persistence','Resilience','Curiosity','Optimism'], correct:'Resilience' },
+  { question:'What quality helps you keep trying even when something is difficult?', options:['Adaptability','Confidence','Perseverance','Curiosity'], correct:'Perseverance' },
+  { question:'Which trait involves adjusting well to new situations?', options:['Determination','Adaptability','Persistence','Optimism'], correct:'Adaptability' },
+  { question:'What describes having a positive outlook and expecting good outcomes?', options:['Curiosity','Confidence','Resilience','Optimism'], correct:'Optimism' },
+  { question:'Which quality means believing in your own abilities?', options:['Confidence','Persistence','Adaptability','Determination'], correct:'Confidence' },
+  { question:'What drives someone to explore and learn new things?', options:['Perseverance','Resilience','Curiosity','Optimism'], correct:'Curiosity' }
+];
+
+let state = {
+  currentTask: 1,
+  currentWordIndex: 0,
+  userInput: '',
+  feedback: '',
+  isCorrect: false,
+  score: 0,
+  selectedAnswer: '',
+  showDefinition: false,
+  task1Completed: false,
+  task2Completed: false,
+  showFinalScore: false
+};
+
+const ICON_CHECK = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+const ICON_X = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+const ICON_ARROW = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+const ICON_RESET = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>';
+
+function currentWord(){ return vocabularyWords[state.currentWordIndex]; }
+function currentQuestion(){ return multipleChoiceQuestions[state.currentWordIndex] || multipleChoiceQuestions[0]; }
+
+function checkAnswer(){
+  const cleanInput = state.userInput.toUpperCase().replace(/\s/g,'');
+  const correct = currentWord().word.replace(/\s/g,'');
+  if(cleanInput === correct){
+    state.feedback = 'Correct! Well done!';
+    state.isCorrect = true;
+    state.score += 10;
+  } else {
+    state.feedback = `Not quite right. The correct answer is: ${currentWord().word}`;
+    state.isCorrect = false;
+  }
+  state.showDefinition = true;
+  render();
+}
+
+function checkMultipleChoice(){
+  const q = currentQuestion();
+  if(state.selectedAnswer === q.correct){
+    state.feedback = "Excellent! That's the right answer!";
+    state.isCorrect = true;
+    state.score += 10;
+  } else {
+    state.feedback = `Not quite. The correct answer is: ${q.correct}`;
+    state.isCorrect = false;
+  }
+  render();
+}
+
+function selectOption(opt){
+  state.selectedAnswer = opt;
+  render();
+}
+
+function nextWord(){
+  if(state.currentWordIndex < vocabularyWords.length - 1){
+    state.currentWordIndex += 1;
+    state.userInput = '';
+    state.selectedAnswer = '';
+    state.feedback = '';
+    state.showDefinition = false;
+  } else {
+    if(state.currentTask === 1) state.task1Completed = true;
+    else state.task2Completed = true;
+
+    if(state.task1Completed && state.task2Completed){
+      state.showFinalScore = true;
+    }
+  }
+  render();
+}
+
+function switchTask(){
+  state.currentTask = state.currentTask === 1 ? 2 : 1;
+  state.currentWordIndex = 0;
+  state.userInput = '';
+  state.selectedAnswer = '';
+  state.feedback = '';
+  state.showDefinition = false;
+  render();
+}
+
+function resetGame(){
+  state = {
+    currentTask: 1, currentWordIndex: 0, userInput: '', feedback: '', isCorrect:false,
+    score: 0, selectedAnswer: '', showDefinition: false,
+    task1Completed: false, task2Completed: false, showFinalScore: false
+  };
+  render();
+}
+
+function closeModal(){
+  state.showFinalScore = false;
+  render();
+}
+
+function onInputChange(el){
+  state.userInput = el.value;
+}
+function onInputKey(e){
+  if(e.key === 'Enter') checkAnswer();
+}
+
+function renderPattern(){
+  return currentWord().pattern.split('').map(ch =>
+    ch === '_' ? `<span class="blank">?</span>` : `<span>${ch}</span>`
+  ).join('');
+}
+
+function render(){
+  document.getElementById('scoreDisplay').textContent = `Score: ${state.score}`;
+  document.getElementById('wordCounter').textContent = `Word ${state.currentWordIndex + 1} of ${vocabularyWords.length}`;
+
+  document.getElementById('tab1Btn').className = 'tab-btn' + (state.currentTask===1 ? ' active-1':'');
+  document.getElementById('tab2Btn').className = 'tab-btn' + (state.currentTask===2 ? ' active-2':'');
+
+  const taskArea = document.getElementById('taskArea');
+  if(state.currentTask === 1){
+    const w = currentWord();
+    taskArea.innerHTML = `
+      <div class="prompt-box">
+        <p class="task-heading">Complete the word by filling in the missing letters:</p>
+        <div class="pattern">${renderPattern()}</div>
+        <p class="hint">Hint: ${w.hint}</p>
+      </div>
+      <div class="input-area">
+        <input type="text" id="wordInput" placeholder="Type your answer here..." value="${state.userInput.replace(/"/g,'&quot;')}">
+        <p class="helper-text">📝 Remember: Type your answer using CAPITAL LETTERS only</p>
+        <button class="btn btn-blue" onclick="checkAnswer()">Check Answer</button>
+      </div>
+    `;
+    const input = document.getElementById('wordInput');
+    input.addEventListener('input', () => onInputChange(input));
+    input.addEventListener('keypress', onInputKey);
+    input.focus();
+  } else {
+    const q = currentQuestion();
+    taskArea.innerHTML = `
+      <div class="prompt-box">
+        <p class="task-heading">Choose the correct answer:</p>
+        <p class="question-text">${q.question}</p>
+      </div>
+      <div class="options-grid">
+        ${q.options.map(opt => `
+          <button class="option-btn ${state.selectedAnswer===opt ? 'selected':''}" onclick="selectOption('${opt.replace(/'/g,"\\'")}')">${opt}</button>
+        `).join('')}
+      </div>
+      <div class="center">
+        <button class="btn btn-violet" ${!state.selectedAnswer ? 'disabled':''} onclick="checkMultipleChoice()">Submit Answer</button>
+      </div>
+    `;
+  }
+
+  const feedbackArea = document.getElementById('feedbackArea');
+  if(state.feedback){
+    const isLast = state.currentWordIndex === vocabularyWords.length - 1;
+    feedbackArea.innerHTML = `
+      <div class="feedback">
+        <div class="feedback-pill ${state.isCorrect ? 'good':'bad'}">
+          ${state.isCorrect ? ICON_CHECK : ICON_X}
+          <span>${state.feedback}</span>
+        </div>
+        ${(state.currentTask===1 && state.showDefinition) ? `
+          <div class="definition-box">
+            <div class="word">${currentWord().word}</div>
+            <div class="def">${currentWord().definition}</div>
+          </div>` : ''}
+        <div class="action-row">
+          ${!isLast ? `<button class="btn btn-gray" onclick="nextWord()">Next Word ${ICON_ARROW}</button>` : `<button class="btn btn-green" onclick="nextWord()">Complete Task ${ICON_CHECK}</button>`}
+          <button class="btn btn-gray" onclick="resetGame()">${ICON_RESET} Start Over</button>
+        </div>
+      </div>
+    `;
+  } else {
+    feedbackArea.innerHTML = '';
+  }
+
+  const completionArea = document.getElementById('completionArea');
+  const taskJustCompleted = (state.currentTask===1 && state.task1Completed) || (state.currentTask===2 && state.task2Completed);
+  const isLast = state.currentWordIndex === vocabularyWords.length - 1;
+  if(taskJustCompleted && isLast && state.feedback){
+    const otherDone = state.currentTask===1 ? state.task2Completed : state.task1Completed;
+    completionArea.innerHTML = `
+      <div class="completion-summary">
+        <div class="emoji">🎉</div>
+        <h3>Task ${state.currentTask} Completed!</h3>
+        <div class="score-card">
+          <div class="big">Your Score: ${state.score} points</div>
+          <div class="small">Task ${state.currentTask} Maximum: ${vocabularyWords.length * 10} points</div>
+        </div>
+        ${!otherDone ? `<div class="nudge">${state.currentTask===1 ? 'Great job! Now try Task 2 to test your understanding of these words.' : 'Excellent! Now try Task 1 to practice spelling these words.'}</div>` : ''}
+        <div class="action-row">
+          ${!otherDone ? `<button class="btn btn-blue" onclick="switchTask()">Try ${state.currentTask===1 ? 'Task 2':'Task 1'}</button>` : ''}
+          <button class="btn btn-gray" onclick="resetGame()">Start Over</button>
+        </div>
+      </div>
+    `;
+  } else {
+    completionArea.innerHTML = '';
+  }
+
+  const pct = ((state.currentWordIndex + 1) / vocabularyWords.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressCaption').innerHTML = `Progress: ${state.currentWordIndex + 1} / ${vocabularyWords.length}
+    ${state.currentTask===1 && state.task1Completed ? `<span class="done">✓ Task 1 Complete</span>`:''}
+    ${state.currentTask===2 && state.task2Completed ? `<span class="done">✓ Task 2 Complete</span>`:''}`;
+
+  document.getElementById('status1').className = 'status-item' + (state.task1Completed ? ' done':'');
+  document.getElementById('status2').className = 'status-item' + (state.task2Completed ? ' done':'');
+
+  const modalArea = document.getElementById('modalArea');
+  if(state.showFinalScore){
+    const max = vocabularyWords.length * 2 * 10;
+    const pctScore = Math.round((state.score / max) * 100);
+    modalArea.innerHTML = `
+      <div class="modal-overlay">
+        <div class="modal">
+          <div class="trophy">🏆</div>
+          <h2>Congratulations!</h2>
+          <p class="lead">You have completed both tasks!</p>
+          <div class="final-score">
+            <div class="pts">Final Score: ${state.score} points</div>
+            <div class="pct">Maximum possible: ${max} points</div>
+            <div class="pct">(${pctScore}% completion rate)</div>
+          </div>
+          <button class="btn btn-blue" onclick="closeModal()">Continue</button>
+          <button class="btn btn-gray" onclick="resetGame()" style="margin-left:10px;">Start Over</button>
+        </div>
+      </div>
+    `;
+  } else {
+    modalArea.innerHTML = '';
+  }
+}
+
+render();
+</script>
+</body>
+</html>
